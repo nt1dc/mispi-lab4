@@ -881,7 +881,7 @@ public class WebResponse implements HTMLSegment, CookieSource {
         }
 
         WebRequest[] result = new WebRequest[ requests.size() ];
-        requests.copyInto( result );
+//        requests.copyInto( result );
         return result;
     }
 
@@ -1253,7 +1253,7 @@ public class WebResponse implements HTMLSegment, CookieSource {
             do {
                 _start = _end+1;
                 while (_start < _buffer.length && _buffer[ _start ] != '<') _start++;
-                for (_end =_start+1; _end < _buffer.length && _buffer[ _end ] != '>'; _end++);
+//                for (_end =_start+1; _end < _buffer.length && _buffer[ _end ] != '>'; _end++);
                 if (_end >= _buffer.length || _end < _start) return null;
                 byteTag = new ByteTag( _buffer, _start+1, _end-_start-1 );
                 if (byteTag.getName().equalsIgnoreCase("script")) {
