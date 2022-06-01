@@ -52,7 +52,7 @@ class ParsedHTML {
 
     private WebResponse  _response;
 
-    private boolean      _updateElements = true;
+    private boolean         _updateElements = true;
 
     private boolean      _enableNoScriptNodes;
 

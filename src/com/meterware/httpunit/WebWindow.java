@@ -140,7 +140,7 @@ public class WebWindow {
         if (getClient().getClientProperties().isAutoRefresh() && response.getRefreshRequest() != null) {
             return getResponse( response.getRefreshRequest() );
         } else if (shouldFollowRedirect( response )) {
-            delay( HttpUnitOptions.getRedirectDelay() );
+//            delay( HttpUnitOptions.getRedirectDelay() );
             return getResponse( new RedirectWebRequest( response ) );
         } else {
             _client.updateFrameContents( this, requestTarget, response, requestContext );

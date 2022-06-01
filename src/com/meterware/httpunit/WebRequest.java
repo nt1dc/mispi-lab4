@@ -71,7 +71,7 @@ public class WebRequest {
      * Returns the final URL associated with this web request.
      **/
     public URL getURL() throws MalformedURLException {
-        if (getURLBase() == null || getURLBase().toString().indexOf( "?" ) < 0) {
+        if (getURLBase() == null || !getURLBase().toString().contains("?")) {
             return newURL( getURLBase(), getURLString() );
         } else {
             final String urlBaseString = getURLBase().toString();

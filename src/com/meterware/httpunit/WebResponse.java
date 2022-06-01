@@ -959,8 +959,7 @@ public class WebResponse implements HTMLSegment, CookieSource {
             } while (count != -1);
         }
 
-        byte[] bytes = outputStream.toByteArray();
-        return bytes;
+        return outputStream.toByteArray();
     }
 
 
@@ -1107,7 +1106,6 @@ public class WebResponse implements HTMLSegment, CookieSource {
                 if (!isHTML()) throw new NotHTMLException( getContentType() );
                 _page = new HTMLPage( this, _frame, _baseURL, _baseTarget, getCharacterSet() );
                 _page.parse( getText(), _pageURL );
-                if (_page == null) throw new IllegalStateException( "replaceText called in the middle of getReceivedPage()" );
             } catch (IOException e) {
                 e.printStackTrace();
                 throw new RuntimeException( e.toString() );
@@ -1223,16 +1221,13 @@ public class WebResponse implements HTMLSegment, CookieSource {
             if (_start >= _buffer.length) {
                 return "";
             } else if (_buffer[ _start ] == '"') {
-                for (_end = _start+1; _end < _buffer.length && _buffer[ _end ] != '"'; _end++);
                 return new String( _buffer, _start+1, _end-_start-1 );
             } else if (_buffer[ _start ] == '\'') {
-                for (_end = _start+1; _end < _buffer.length && _buffer[ _end ] != '\''; _end++);
                 return new String( _buffer, _start+1, _end-_start-1 );
             } else if (_buffer[ _start ] == '=') {
                 _end = _start;
                 return "=";
             } else {
-                for (_end = _start+1; _end < _buffer.length && _buffer[ _end ] != '=' && !Character.isWhitespace( _buffer[ _end ] ); _end++);
                 return new String( _buffer, _start, (_end--)-_start );
             }
         }

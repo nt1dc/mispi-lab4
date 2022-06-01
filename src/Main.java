@@ -45,11 +45,8 @@ public class Main {
             while (true) {
                 WebResponse response = sc.getResponse(request);
                 System.out.println("Count: " + number++ + response);
-                java.lang.Thread.sleep(1);
             }
-        } catch (InterruptedException ex) {
-            Logger.getLogger("global").log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
+        }  catch (MalformedURLException ex) {
             Logger.getLogger("global").log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger("global").log(Level.SEVERE, null, ex);
